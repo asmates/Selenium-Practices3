@@ -1,0 +1,14 @@
+
+<!--
+-> Amazon uzerine yapilan 2 testi otomatik olarak calistiracak xml kodunu yaziniz ve calistiriniz.
+!-->
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Amazon Testlerin Paralel Calistirilmasi" verbose="3" parallel="classes" thread-count="2">
+    <test name="Amazon Test">
+        <classes>
+            <class name="tests.sorular_03.Q01_AmazonWebTableTest"></class>
+            <class name="tests.sorular_03.Q02_AmazonWebTableTest"></class>
+        </classes>
+    </test>
+</suite>
