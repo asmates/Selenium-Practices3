@@ -33,7 +33,6 @@ public class Driver {
 
     private Driver() {
 
-
     }
 
     static WebDriver driver;

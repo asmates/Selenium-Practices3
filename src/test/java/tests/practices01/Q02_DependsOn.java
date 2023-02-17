@@ -1,4 +1,4 @@
-package tests.sorular_01;
+package tests.practices01;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

@@ -1,4 +1,4 @@
-package tests.sorular_01;
+package tests.practices01;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -43,8 +43,8 @@ public class Q01_Priority {
     public void  titleTest() {
 
         //Sayfa basliginin “YouTube” oldugunu test etme :
-        String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "YouTube";
+        String actualTitle = Driver.getDriver().getTitle();
 
         Assert.assertEquals(expectedTitle, actualTitle);
     }
@@ -60,7 +60,7 @@ public class Q01_Priority {
     public void searchBoxTest() {
 
         //"Search Box 'in" erisilebilir oldugunu test etme :
-        WebElement searchBox = Driver.getDriver().findElement(By.xpath("(//*[@id='search'])[2]"));
+        WebElement searchBox = Driver.getDriver().findElement(By.xpath("//input[@id='search']"));
 
         Assert.assertTrue(searchBox.isEnabled());
     }
@@ -68,8 +68,8 @@ public class Q01_Priority {
     public void wrongTitleTest() {
 
         //Sayfa basliginin “youtube” olmadigini dogrulama :
-        String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "youtube";
+        String actualTitle = Driver.getDriver().getTitle();
 
         Assert.assertNotEquals(expectedTitle, actualTitle);
     }

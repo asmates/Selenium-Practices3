@@ -1,4 +1,4 @@
-package tests.sorular_01;
+package tests.practices01;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
