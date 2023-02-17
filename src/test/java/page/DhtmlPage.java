@@ -13,7 +13,6 @@ public class DhtmlPage {
     }
 
     //Baskentler :
-
     @FindBy(xpath = "//*[@id='box1']")
     public WebElement oslo;
 
@@ -36,7 +35,6 @@ public class DhtmlPage {
     public WebElement madrid;
 
     //Ulkeler :
-
     @FindBy (xpath = "//*[@id='box106']")
     public WebElement italy;
 

@@ -3,6 +3,7 @@ package tests.practices01;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import page.DhtmlPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class Q03_DhtmlPageTest {
@@ -13,17 +14,19 @@ public class Q03_DhtmlPageTest {
     -> Sayfayi kapatiniz.
     */
 
+    Actions actions;
+
     @Test
     public void test01() throws InterruptedException {
 
         //"http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html" sayfasina gitme :
-        Driver.getDriver().get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
-        Thread.sleep(2000);
+        Driver.getDriver().get(ConfigReader.getProperty("dhtmlUrl"));
+        Thread.sleep(1000);
 
         //Ulkelere gore baskentleri doldurma :
         DhtmlPage dhtmlPage = new DhtmlPage();
 
-        Actions actions = new Actions(Driver.getDriver());
+        actions = new Actions(Driver.getDriver());
 
         actions.dragAndDrop(dhtmlPage.oslo, dhtmlPage.norway)
                .dragAndDrop(dhtmlPage.stockholm, dhtmlPage.sweden)
@@ -33,7 +36,7 @@ public class Q03_DhtmlPageTest {
                .dragAndDrop(dhtmlPage.rome, dhtmlPage.italy)
                .dragAndDrop(dhtmlPage.madrid, dhtmlPage.spain).perform();
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         //Sayfayi kapatma :
         Driver.closeDriver();

@@ -18,10 +18,14 @@ public class Q04_SwagLabsPageTest {
     -> Sayfayi kapatiniz.
     */
 
+    SwagLabsPage swagLabsPage;
+
+    Select select;
+
     @Test
     public void test01() throws Exception {
 
-        SwagLabsPage swagLabsPage = new SwagLabsPage();
+        swagLabsPage = new SwagLabsPage();
 
         //"https://www.saucedemo.com/" adresine gitme :
         Driver.getDriver().get(ConfigReader.getProperty("swagLabsUrl"));
@@ -40,11 +44,12 @@ public class Q04_SwagLabsPageTest {
         Thread.sleep(1000);
 
         //Dusukten yuksege fiyatlari secme ve fiyatlarin dusukten yuksege gorunur oldugunu dogrulama :
-        Select select = new Select(SwagLabsPage.dropDownMenu);
+        select = new Select(SwagLabsPage.dropDownMenu);
+
         select.selectByVisibleText("Price (low to high)");
 
-        String actualMenu = select.getFirstSelectedOption().getText();
         String expectedMenu = "Price (low to high)";
+        String actualMenu = select.getFirstSelectedOption().getText();
 
         Assert.assertEquals(expectedMenu, actualMenu);
         Thread.sleep(1000);

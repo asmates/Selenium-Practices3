@@ -29,8 +29,8 @@ public class Q02_DependsOn {
         Driver.getDriver().get("https://www.amazon.com");
 
         //"Amazon" anasayfaya gidildigini test etme :
-        String actualUrl = Driver.getDriver().getCurrentUrl();
         String expectedUrl = "https://www.amazon.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
 
         Assert.assertEquals(expectedUrl, actualUrl);
     }
@@ -57,15 +57,12 @@ public class Q02_DependsOn {
         Driver.getDriver().findElement(By.xpath("(//*[@class='s-image'])[1]")).click();
 
         //Urunun fiyatinin "$26.5" oldugunu test etme :
-        WebElement fiyat = Driver.getDriver().
-        findElement(By.xpath("//*[@id='productTitle']"));
+        WebElement fiyat = Driver.getDriver().findElement(By.xpath("//*[@id='productTitle']"));
 
-        String actualFiyat = fiyat.getText();
         String expectedFiyat = "26.5";
+        String actualFiyat = fiyat.getText();
 
-        System.out.println(actualFiyat);
-
-        Assert.assertTrue(actualFiyat.contains(expectedFiyat));
+        Assert.assertEquals(expectedFiyat, actualFiyat);
 
         //Sayfayi kapatma :
         Driver.closeDriver();
