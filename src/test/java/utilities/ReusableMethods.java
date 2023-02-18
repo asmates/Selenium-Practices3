@@ -22,45 +22,46 @@ import static utilities.Driver.driver;
 
 public class ReusableMethods {
 
-    //========ScreenShot(Syafanın resmini alma)=====//
+    //=====ScreenShot(Sayfanin resmini alma)=====//
     public static String getScreenshot(String name) throws IOException {
 
-        // naming the screenshot with the current date to avoid duplication
+        //Naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("ddMMyyyyhhmmss").format(new Date());
 
-        // TakesScreenshot is an interface of selenium that takes the screenshot
+        //TakesScreenshot is an interface of selenium that takes the screenshot
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         File source = ts.getScreenshotAs(OutputType.FILE);
 
-        // full path to the screenshot location
+        //Full path to the screenshot location
         String target = System.getProperty("user.dir") + "/target/Screenshots/" + name + date + ".png";
         File finalDestination = new File(target);
 
-        // save the screenshot to the path given
+        //Save the screenshot to the path given
         FileUtils.copyFile(source, finalDestination);
+
         return target;
     }
 
-    //========ScreenShot Web Element(Bir webelementin resmini alma)=====//
+    //=====ScreenShot WebElement(Bir webelement'in resmini alma)=====//
     public static String getScreenshotWebElement(String name, WebElement element) throws IOException {
 
-        // naming the screenshot with the current date to avoid duplication
+        //Naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
-        // TakesScreenshot is an interface of selenium that takes the screenshot
+        //TakesScreenshot is an interface of selenium that takes the screenshot
         File source = element.getScreenshotAs(OutputType.FILE);
 
-        // full path to the screenshot location
+        //Full path to the screenshot location
         String wElementSS = System.getProperty("user.dir") + "/target/WElementScreenshots/" + name + date + ".png";
         File finalDestination = new File(wElementSS);
 
-        // save the screenshot to the path given
+        //Save the screenshot to the path given
         FileUtils.copyFile(source, finalDestination);
 
         return wElementSS;
     }
 
-    //========Switching Window(Pencereler arası geçiş)=====//
+    //=====Switching Window(Pencereler arasi gecis)=====//
     public static void switchToWindow(String targetTitle) {
 
         String origin = Driver.getDriver().getWindowHandle();
@@ -77,7 +78,7 @@ public class ReusableMethods {
         Driver.getDriver().switchTo().window(origin);
     }
 
-    //========Hover Over(Elementin üzerinde beklemek)=====//
+    //=====Hover Over(Element'in Uzerinde bekleme)=====//
     public static void hover(WebElement element) {
 
         Actions actions = new Actions(Driver.getDriver());
@@ -85,40 +86,39 @@ public class ReusableMethods {
         actions.moveToElement(element).perform();
     }
 
-    //==========Return a list of string given a list of Web Element====////
+    //=====Return a list of String Given a list of WebElement=====//
     public static List<String> getElementsText(List<WebElement> list) {
 
-        List<String> elemTexts = new ArrayList<>();
+        List<String> elementTexts = new ArrayList<>();
 
-        for (WebElement el : list) {
+        for (WebElement each : list) {
 
-            if (!el.getText().isEmpty()) {
+            if (!each.getText().isEmpty()) {
 
-                elemTexts.add(el.getText());
+                elementTexts.add(each.getText());
             }
         }
-        return elemTexts;
+        return elementTexts;
     }
 
-    //========Returns the Text of the element given an element locator==//
+    //=====Returns the text of the Element Given an Element Locator=====//
     public static List<String> getElementsText(By locator) {
 
-        List<WebElement> elems = Driver.getDriver().findElements(locator);
+        List<WebElement> elements = Driver.getDriver().findElements(locator);
 
-        List<String> elemTexts = new ArrayList<>();
+        List<String> elementTexts = new ArrayList<>();
 
-        for (WebElement el : elems) {
+        for (WebElement each : elements) {
 
-            if (!el.getText().isEmpty()) {
+            if (!each.getText().isEmpty()) {
 
-                elemTexts.add(el.getText());
+                elementTexts.add(each.getText());
             }
         }
-        return elemTexts;
+        return elementTexts;
     }
 
-    // HARD WAIT WITH THREAD.SLEEP
-    // waitFor(5); => waits for 5 second
+    //=====Hard Wait with Thread.Sleep=====//
     public static void waitFor(int sec) {
 
         try {
@@ -130,7 +130,7 @@ public class ReusableMethods {
         }
     }
 
-    //===============Explicit Wait==============//
+    //=====Explicit Wait=====//
     public static WebElement waitForVisibility(WebElement element, int timeout) {
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
@@ -199,7 +199,7 @@ public class ReusableMethods {
         }
     }
 
-    //======Fluent Wait====//
+    //=====Fluent Wait=====//
     public static WebElement fluentWait(final WebElement webElement, int timeout) {
 
         /*
@@ -208,8 +208,8 @@ public class ReusableMethods {
         */
 
         FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver())
-        .withTimeout(Duration.ofSeconds(3))//Wait 3 second each time
-        .pollingEvery(Duration.ofSeconds(1));//Check for the element every 1 second
+        .withTimeout(Duration.ofSeconds(3)) //Wait 3 second each time
+        .pollingEvery(Duration.ofSeconds(1)); //Check for the element every 1 second
 
         WebElement element = wait.until(new Function<WebDriver, WebElement>() {
 
@@ -274,27 +274,32 @@ public class ReusableMethods {
     }
 
     static Faker faker;
+
     static Actions actions;
+
     static Select select;
+
     static WebElement ddm;
 
-    //====== Faker ======//
+    //=====Faker=====//
     public static Faker getFaker() { //getFaker method
 
         return faker = new Faker();
     }
 
-    //====== Actions ======//
+    //=====Actions=====//
     public static Actions getActions() { //getActions method
+
         return actions = new Actions(Driver.getDriver());
     }
 
-    //====== Select ======//
+    //=====Select=====//
     public static Select select(WebElement ddm) {
+
         return select = new Select(ddm);
     }
 
-    //====== js ======//
+    //=====JavascriptExecutor=====//
     public static void jsclick(WebElement webElement) {
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -408,12 +413,11 @@ public class ReusableMethods {
         driver.findElement(locator).click();
     }
 
-
     public static void scrollDownJs() {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        js.executeScript("window.scrollBy(0,250)", "");
+        js.executeScript("window.scrollBy(0, 250)", "");
     }
 
     public static boolean confirmValid(String fieldName) {
@@ -426,6 +430,7 @@ public class ReusableMethods {
             ("//label[text()='" + fieldName + "']//following-sibling::div")).isDisplayed();
         } catch (Exception e) {
 
+            e.printStackTrace();
         }
         return flag;
     }
@@ -458,6 +463,7 @@ public class ReusableMethods {
             flag = true;
         } catch (Exception e) {
 
+            e.printStackTrace();
         }
         return flag;
     }
