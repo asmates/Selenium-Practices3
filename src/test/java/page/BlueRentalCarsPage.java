@@ -9,7 +9,7 @@ public class BlueRentalCarsPage {
 
     public BlueRentalCarsPage() {
 
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy (xpath = "//*[@class='btn btn-primary btn-sm']")

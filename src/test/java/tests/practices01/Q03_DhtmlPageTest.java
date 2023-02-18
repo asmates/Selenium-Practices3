@@ -19,14 +19,14 @@ public class Q03_DhtmlPageTest {
     @Test
     public void test01() throws InterruptedException {
 
+        actions = new Actions(Driver.getDriver());
+
         //"http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html" sayfasina gitme :
         Driver.getDriver().get(ConfigReader.getProperty("dhtmlUrl"));
         Thread.sleep(1000);
 
         //Ulkelere gore baskentleri doldurma :
         DhtmlPage dhtmlPage = new DhtmlPage();
-
-        actions = new Actions(Driver.getDriver());
 
         actions.dragAndDrop(dhtmlPage.oslo, dhtmlPage.norway)
                .dragAndDrop(dhtmlPage.stockholm, dhtmlPage.sweden)

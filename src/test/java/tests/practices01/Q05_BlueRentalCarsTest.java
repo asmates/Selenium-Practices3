@@ -43,8 +43,8 @@ public class Q05_BlueRentalCarsTest extends TestBaseRapor {
         extentTest.info("Login tusuna basildi.");
 
         //"Email adresss ve password" kisimlarina verilen bilgileri girme :
-        blueRentalCarsPage.email.sendKeys("customer@bluerentalcars.com");
-        blueRentalCarsPage.password.sendKeys("12345");
+        blueRentalCarsPage.email.sendKeys(ConfigReader.getProperty("blueRentalCarsEmail"));
+        blueRentalCarsPage.password.sendKeys(ConfigReader.getProperty("blueRentalPassword"));
         Thread.sleep(1000);
 
         extentTest.info("email ve password bilgileri girildi.");

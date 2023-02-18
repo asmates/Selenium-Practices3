@@ -6,13 +6,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.WebUniversityPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Q04_WebUniversityTest {
+public class Q03_WebUniversityTest {
 
     /*
     -> "http://webdriveruniversity.com/To-Do-List/index.html" adresine gidiniz.
@@ -29,21 +30,26 @@ public class Q04_WebUniversityTest {
     -> Sayfayi kapatiniz.
     */
 
+    WebUniversityPage webUniversityPage;
+
+    Actions actions;
+
     @Test
     public void test01() throws InterruptedException {
 
-        WebUniversityPage webUniversityPage = new WebUniversityPage();
+        webUniversityPage = new WebUniversityPage();
+
+        actions = new Actions(Driver.getDriver());
 
         //"http://webdriveruniversity.com/To-Do-List/index.html" adresine gitme :
-        Driver.getDriver().get("http://webdriveruniversity.com/To-Do-List/index.html");
+        Driver.getDriver().get(ConfigReader.getProperty("webdriverUniversityUrl"));
 
         //"Todos" listesi ekleme :
 
         //1.YOL :
-        List<String> toDosListesi = new ArrayList<String>(Arrays.asList
-        ("Kahvaltiyi hazirla!", "Bulasiklari yika!", "Bebekle ilgilen!", "Cocugun odevine yardim et!", "Selenium calis!", "Uyu!"));
-
-        Actions actions = new Actions(Driver.getDriver());
+        List<String> toDosListesi = new ArrayList<String>(Arrays.asList("Kahvaltiyi hazirla!", "Bulasiklari yika!",
+                                                                        "Bebekle ilgilen!", "Cocugun odevine yardim et!",
+                                                                        "Selenium calis!", "Uyu!"));
 
         for (String each : toDosListesi
              ) {
@@ -51,12 +57,13 @@ public class Q04_WebUniversityTest {
             actions.click(webUniversityPage.addNewToDo).sendKeys(each).sendKeys(Keys.ENTER).perform();
         }
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         /*
         2.YOL :
-        List<String> toDosListesi = new ArrayList<String>(Arrays.asList
-        ("Kahvaltiyi hazirla!", "Bulasiklari yika!", "Bebekle ilgilen!", "Cocugun odevine yardim et!", "Selenium calis!", "Uyu!"));
+        List<String> toDosListesi = new ArrayList<String>(Arrays.asList("Kahvaltiyi hazirla!", "Bulasiklari yika!",
+                                                                        "Bebekle ilgilen!", "Cocugun odevine yardim et!",
+                                                                        "Selenium calis!", "Uyu!"));
 
         for (String each : toDosListesi
              ) {
@@ -67,8 +74,9 @@ public class Q04_WebUniversityTest {
 
         /*
         3.YOL :
-        List<String> toDosListesi = new ArrayList<String>(Arrays.asList
-        ("Kahvaltiyi hazirla!", "Bulasiklari yika!", "Bebekle ilgilen!", "Cocugun odevine yardim et!", "Selenium calis!", "Uyu!"));
+        List<String> toDosListesi = new ArrayList<String>(Arrays.asList("Kahvaltiyi hazirla!", "Bulasiklari yika!",
+                                                                        "Bebekle ilgilen!", "Cocugun odevine yardim et!",
+                                                                        "Selenium calis!", "Uyu!"));
 
         toDosListesi.forEach(t -> webUniversityPage.addNewToDo.sendKeys(t, Keys.ENTER));
         */
@@ -84,7 +92,7 @@ public class Q04_WebUniversityTest {
             each.click();
         }
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         //2.YOL :
         //webUniversityPage.drawButtons.forEach(WebElement::click);
@@ -100,7 +108,7 @@ public class Q04_WebUniversityTest {
             each.click();
         }
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         //2.YOL :
         //webUniversityPage.deleteButtons.forEach(WebElement::click);

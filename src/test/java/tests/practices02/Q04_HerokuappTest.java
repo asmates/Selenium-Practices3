@@ -5,9 +5,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HerokuappPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 
-public class Q05_HerokuappTest {
+public class Q04_HerokuappTest {
 
     /*
     -> "https://testpages.herokuapp.com/styled/events/javascript-events.html" adresine gidiniz.
@@ -18,15 +19,17 @@ public class Q05_HerokuappTest {
 
     HerokuappPage herokuappPage;
 
-    Actions actions = new Actions(Driver.getDriver());
+    Actions actions;
 
     @Test
     public void test01() throws Exception {
 
         herokuappPage = new HerokuappPage();
 
+        actions = new Actions(Driver.getDriver());
+
         //"https://testpages.herokuapp.com/styled/events/javascript-events.html" adresine gitme :
-        Driver.getDriver().get("https://testpages.herokuapp.com/styled/events/javascript-events.html");
+        Driver.getDriver().get(ConfigReader.getProperty("herokuappUrl"));
         Thread.sleep(1000);
 
         //Tum butonlara tiklama :
@@ -88,8 +91,8 @@ public class Q05_HerokuappTest {
 
         /*
         2.YOL :
-        int actualVerificaton = herokuappPage.eventTriggered.size();
         int expectedVerificaton = 11;
+        int actualVerificaton = herokuappPage.eventTriggered.size();
 
         Assert.assertEquals(expectedVerificaton, actualVerificaton);
         Thread.sleep(1000);

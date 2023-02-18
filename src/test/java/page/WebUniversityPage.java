@@ -11,10 +11,10 @@ public class WebUniversityPage {
 
     public WebUniversityPage() {
 
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath ="//*[@type='text']")
+    @FindBy(xpath ="//input[@type='text']")
     public WebElement addNewToDo;
 
     @FindBy (xpath = "//li" )

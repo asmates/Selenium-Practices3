@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class Q02_DependsOn {
@@ -26,7 +27,7 @@ public class Q02_DependsOn {
     public void test01() {
 
         //"https://www.amazon.com/" adresine gitme :
-        Driver.getDriver().get("https://www.amazon.com");
+        Driver.getDriver().get(ConfigReader.getProperty("amazonUrl"));
 
         //"Amazon" anasayfaya gidildigini test etme :
         String expectedUrl = "https://www.amazon.com/";

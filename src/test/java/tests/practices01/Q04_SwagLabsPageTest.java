@@ -45,7 +45,6 @@ public class Q04_SwagLabsPageTest {
 
         //Dusukten yuksege fiyatlari secme ve fiyatlarin dusukten yuksege gorunur oldugunu dogrulama :
         select = new Select(SwagLabsPage.dropDownMenu);
-
         select.selectByVisibleText("Price (low to high)");
 
         String expectedMenu = "Price (low to high)";
